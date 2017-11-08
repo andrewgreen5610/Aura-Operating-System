@@ -53,32 +53,6 @@ namespace Aura_OS
             Console.Write("Booting Aura...\n");
             Console.ForegroundColor = ConsoleColor.White;
 
-            #region FileSystem Init
-
-            FS = new CosmosVFS();
-            FS.Initialize();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("[OK]");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(" ");
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.Write("FileSystem Initialized\n");
-            Console.ForegroundColor = ConsoleColor.White;
-
-            #endregion
-
-            #region FileSystem Scan
-            Sys.FileSystem.VFS.VFSManager.RegisterVFS(FS);
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("[OK]");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(" ");
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.Write("FileSystem Scanned\n");
-            Console.ForegroundColor = ConsoleColor.White;
-
-            #endregion
-
             setup.SetupVerifyCompleted();
 
             if (SystemExists)

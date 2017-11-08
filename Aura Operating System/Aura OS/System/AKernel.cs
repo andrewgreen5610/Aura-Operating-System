@@ -9,6 +9,21 @@ namespace Aura_OS
 
         public static List<HAL.Driver> Drivers = new List<HAL.Driver>();
 
+        public static string klog = "";
+
+        public static void Init()
+        {
+            for (int i = 0; i < Drivers.Count; i++)
+            {
+                if (Drivers[i].Init())
+                    klog += "[Kernel] Module '" + Drivers[i].Name + "' loaded sucessfully\n";
+                else
+                    klog += "[Kernel] Failure loading module '" + Drivers[i].Name + "'\n";
+
+            }
+            klog += "mounting devices";
+        }
+
         static Cosmos.Core.IOPort io = new Cosmos.Core.IOPort(0);
         static int PP = 0, D = 0;
         public static void sendSignal(string process, int signal)

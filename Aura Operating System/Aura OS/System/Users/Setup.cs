@@ -22,31 +22,7 @@ namespace Aura_OS.System
         /// </summary>
         public void SetupVerifyCompleted()
         {
-            try
-            {
-                File.Create(@"0:\filesystem.sys");
-                if (File.Exists(@"0:\filesystem.sys"))
-                {
-                    File.Delete(@"0:\filesystem.sys");
-                    if (!File.Exists(@"0:\System\setup.set"))
-                    {
-                        Kernel.SystemExists = false;
-                        StartSetup(true);
-                    }
-                    else
-                    {
-                        Kernel.SystemExists = true;
-                    }
-                }
-                else
-                {
-                    StartSetup(false);
-                }
-            }
-            catch
-            {
-                StartSetup(false);
-            }
+            StartSetup(false);
         }
 
         /// <summary>

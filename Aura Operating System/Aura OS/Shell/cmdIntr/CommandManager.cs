@@ -161,9 +161,14 @@ namespace Aura_OS.Shell.cmdIntr
                 Tests.Crash.c_Crash();
             }
 
+            else if (cmd.Equals("fs"))
+            {
+                Akernel.Init();
+            }
+
             #endregion Tests
 
-        #region Tools
+            #region Tools
 
             else if (cmd.Equals("snake"))
             {
