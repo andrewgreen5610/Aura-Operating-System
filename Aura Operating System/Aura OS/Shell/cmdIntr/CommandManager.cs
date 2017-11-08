@@ -194,6 +194,8 @@ namespace Aura_OS.Shell.cmdIntr
                 }
                 if (!installation_detected)
                     Console.WriteLine("Installation not detected!");
+                Console.ReadKey();
+                Setup.Init();
             }
 
             #endregion Tests
