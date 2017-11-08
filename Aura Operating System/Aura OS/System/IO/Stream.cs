@@ -88,4 +88,52 @@ namespace Aura_OS.IO
             pointer = ptr;
         }
     }
+
+    public class FileStream : ioStream
+    {
+        private string fname = "";
+        string fmode = "";
+        public FileStream(string fname, string mode)
+        {
+            this.fname = fname;
+            this.init(7000);
+            fmode = mode;
+            if (mode == "r")
+            {
+                this.init(HAL.FileSystem.Root.readFile(fname).Length);
+                this.Data = HAL.FileSystem.Root.readFile(fname);
+                return;
+            }
+        }
+
+        public override void Flush()
+        {
+            base.Flush();
+        }
+        public override void Write(byte i)
+        {
+            base.Write(i);
+        }
+        public override byte Read()
+        {
+            return base.Read();
+        }
+        public override void Close()
+        {
+            if (fmode == "w")
+            {
+                MemoryStream ms = new MemoryStream(this.Position);
+
+                for (int i = 0; i < this.Position; i++)
+                {
+                    ms.Write(this.Data[i]);
+                }
+                this.Data = ms.Data;
+                HAL.FileSystem.Root.saveFile(this.Data, fname, "user");
+
+            }
+
+
+        }
+    }
 }
