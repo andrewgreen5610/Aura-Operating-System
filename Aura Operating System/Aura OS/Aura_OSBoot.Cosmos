@@ -79,6 +79,10 @@
     <Folder Include="System\" />
     <Folder Include="System\Computer\" />
     <Folder Include="System\Drawable\" />
+    <Folder Include="System\Hardware\" />
+    <Folder Include="System\Hardware\Drivers\" />
+    <Folder Include="System\IO\" />
+    <Folder Include="System\IO\Filesystem\" />
     <Folder Include="System\Security\" />
     <Folder Include="System\Translation\" />
     <Folder Include="System\Translation\Text\" />

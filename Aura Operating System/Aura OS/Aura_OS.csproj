@@ -10,24 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="System\IOPort.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Aura_OSBoot.Cosmos" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="System\AKernel.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Cosmos.Debug.Kernel" Version="1.0.0-*" />
     <PackageReference Include="Cosmos.System2" Version="1.0.0-*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="System\Utils\" />
   </ItemGroup>
 
 </Project>
