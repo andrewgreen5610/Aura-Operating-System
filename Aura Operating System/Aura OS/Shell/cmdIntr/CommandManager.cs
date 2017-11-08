@@ -616,15 +616,16 @@ You can change this message by modifiying /etc/motd
             for (int i = 0; i < Devices.dev.Count; i++)
             {
                 BlockDevice device = (BlockDevice)(Devices.dev[i].dev);
-                if (Devices.dev[i].name == args[1])
+                if (Devices.dev[i].name == args[0])
                 {
                     GLNFS fd = new GLNFS((Partition)device);
                     if (HAL.GLNFS.isGFS((Partition)device))
                     {
-                        if (args.Length > 2)
+                        //if (args.Length > 2)
                             ((HAL.RootFilesystem)HAL.FileSystem.Root).Mount("/dev/sd", fd);
-                        else
-                            ((HAL.RootFilesystem)HAL.FileSystem.Root).Mount("", fd);
+                        Console.WriteLine("Mounted!");
+                        //else
+                        //    ((HAL.RootFilesystem)HAL.FileSystem.Root).Mount("", fd);
                     }
                 }
             }
