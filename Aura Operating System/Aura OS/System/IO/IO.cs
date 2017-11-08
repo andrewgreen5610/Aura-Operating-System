@@ -65,7 +65,7 @@ namespace Aura_OS.IO
         }
         public uint ReadUInt32()
         {
-            uint val = BitConverter.ToUInt32(BaseStream.Data, (int)BaseStream.Position);
+            uint val = (uint)BitConverter.ToInt32(BaseStream.Data, (int)BaseStream.Position);
             BaseStream.Position += 4;
             return val;
         }

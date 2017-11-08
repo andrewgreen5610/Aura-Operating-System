@@ -22,6 +22,7 @@ namespace Aura_OS
 
             }
             klog += "mounting devices";
+            HAL.FileSystem.Root.Mount("dev", new HAL.DevFS());
         }
 
         static Cosmos.Core.IOPort io = new Cosmos.Core.IOPort(0);

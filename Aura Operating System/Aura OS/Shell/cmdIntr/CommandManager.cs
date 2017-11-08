@@ -5,6 +5,8 @@
 */
 
 using Aura_OS.Apps.User;
+using System;
+using Cosmos.HAL.BlockDevice;
 
 namespace Aura_OS.Shell.cmdIntr
 {
@@ -163,7 +165,32 @@ namespace Aura_OS.Shell.cmdIntr
 
             else if (cmd.Equals("fs"))
             {
+                HAL.ATA ata = new HAL.ATA();
                 Akernel.Init();
+
+                HAL.FileSystem.Root = new HAL.RootFilesystem();
+                HAL.GLNFS fd;
+
+                bool installation_detected = false;
+
+                for (int i = 0; i < HAL.Devices.dev.Count; i++)
+                {
+                    if (HAL.Devices.dev[i].dev is Partition)
+                    {
+                        if (HAL.GLNFS.isGFS((Partition)HAL.Devices.dev[i].dev))
+                        {
+                            fd = new HAL.GLNFS((Partition)HAL.Devices.dev[i].dev);
+                            if (fd.DriveLabel == "GruntyOS")
+                            {
+                                Console.WriteLine("Installation found, mounted partition (" + HAL.Devices.dev[i].name + ")");
+                                installation_detected = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (!installation_detected)
+                    Console.WriteLine("Installation not detected!");
             }
 
             #endregion Tests
