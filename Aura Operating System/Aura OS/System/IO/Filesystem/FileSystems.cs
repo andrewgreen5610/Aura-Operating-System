@@ -212,7 +212,7 @@ namespace Aura_OS.HAL
         public override fsEntry[] getLongList(string dir)
         {
 
-            dir = Utils.Util.cleanName(dir);
+            //dir = Utils.Util.cleanName(dir);
             for (int i = 0; i < Mountpoints.Count; i++)
             {
                 if (Mountpoints[i].Path.Length <= dir.Length && Mountpoints[i].Path != "")
@@ -252,21 +252,35 @@ namespace Aura_OS.HAL
         }
         public override void makeDir(string dir, string owner)
         {
-
+            Console.WriteLine("STEP01");
+            Console.ReadKey();
             dir = Utils.Util.cleanName(dir);
+            Console.WriteLine("STEP02");
+            Console.ReadKey();
             for (int i = 0; i < Mountpoints.Count; i++)
             {
+                Console.WriteLine("STEP03");
+                Console.ReadKey();
                 if (Mountpoints[i].Path.Length <= dir.Length && Mountpoints[i].Path != "")
                 {
-
+                    Console.WriteLine("STEP04");
+                    Console.ReadKey();
                     if (dir.Substring(0, Mountpoints[i].Path.Length) == Mountpoints[i].Path)
                     {
+                        Console.WriteLine("STEP05");
+                        Console.ReadKey();
                         Mountpoints[i].device.makeDir(dir.Substring(Mountpoints[i].Path.Length), owner);
+                        Console.WriteLine("STEP06");
+                        Console.ReadKey();
                         return;
                     }
                 }
             }
+            Console.WriteLine("STEP07");
+            Console.ReadKey();
             Mountpoints[0].device.makeDir(dir, owner);
+            Console.WriteLine("STEP08");
+            Console.ReadKey();
             return;
         }
         public override byte[] readFile(string dir)
